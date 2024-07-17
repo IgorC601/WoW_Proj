@@ -11,7 +11,7 @@ from langchain.vectorstores import Pinecone
 
 ###################################################################
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 
 embed = OpenAIEmbeddings(
    model = 'text-embedding-ada-002',
@@ -48,8 +48,8 @@ class StreamHandler(BaseCallbackHandler):
 
 @st.cache_resource
 def connect_to_pinecone():
-    pinecone.init(api_key="63a060f2-2e41-4854-a497-5866c8dd65b4", environment="gcp-starter")
-    return pinecone.Index('grundordnung-fau')
+    pc = pinecone.Pinecone(api_key="d3bb7c2c-247a-418e-a91e-3665d3919137")
+    return pc.Index('wordsofwisdom')
 
 ###################################################################
 
@@ -59,7 +59,7 @@ def run_chatbot_app():
         
     # prompt template
     template = """You are a helpful chatbot assistant who is having a conversation with a human
-                You know all the regulation from the Friedrich-Alexander-Universität Erlangen-Nürnberg
+                You know all the details from the BERND KOLB WORDS OF WISDOM SCRIPTUM IRGENDETWAS STIMMT NICHT book
                 You should answer the question or questions posed in German, based ONLY on the context provided.
                 DON'T write about anything that isn't present in the context.
                 
