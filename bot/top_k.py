@@ -14,9 +14,10 @@ from dotenv import load_dotenv
 
 
 ###################################################################
-load_dotenv()
+#load_dotenv()
 
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+#OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 embed = OpenAIEmbeddings(
    model = 'text-embedding-ada-002',
@@ -51,7 +52,9 @@ class StreamHandler(BaseCallbackHandler):
 
 ###################################################################
 
-PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
+#PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
+PINECONE_API_KEY = st.secrets["OPENAI_API_KEY"]
+
 
 @st.cache_resource
 def connect_to_pinecone():
