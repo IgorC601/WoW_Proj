@@ -9,10 +9,11 @@ from langchain.prompts import PromptTemplate
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone
 import hmac
+import os
 
 ###################################################################
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 embed = OpenAIEmbeddings(
    model = 'text-embedding-ada-002',
@@ -47,9 +48,11 @@ class StreamHandler(BaseCallbackHandler):
 
 ###################################################################
 
+PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
+
 @st.cache_resource
 def connect_to_pinecone():
-    pc = pinecone.Pinecone(api_key="d3bb7c2c-247a-418e-a91e-3665d3919137")
+    pc = pinecone.Pinecone(api_key=PINECONE_API_KEY)
     return pc.Index('wordsofwisdom')
 
 ###################################################################
@@ -102,7 +105,7 @@ def run_chatbot_app():
     )
 
     # Streamlit app
-    st.title('Words of Wisdom Testg')
+    st.title('Words of Wisdom Test')
 
     query = st.text_input("Stelle hier deine Frage", key='input')
 
