@@ -84,15 +84,16 @@ def run_chatbot_app():
     idx = connect_to_pinecone()
         
     # prompt template
-    template = """You are a helpful chatbot assistant who is having a conversation with a human
-                You know all the details from the BERND KOLB WORDS OF WISDOM SCRIPTUM IRGENDETWAS STIMMT NICHT book
+    template = """You are a helpful chatbot assistant who is having a conversation with a human.
+                You know all the details from the book BERND KOLB WORDS OF WISDOM SCRIPTUM IRGENDETWAS STIMMT NICHT.
                 You should answer the question or questions posed in German, based ONLY on the context provided.
                 DON'T write about anything that isn't present in the context.
                 
                 Context:
-                {context}
+                ```{context}```
 
-                Human: {human_input}
+                Human: 
+                ```{human_input}```
                 """
 
     prompt = PromptTemplate(
@@ -101,7 +102,7 @@ def run_chatbot_app():
     )
 
     # Streamlit app
-    st.title('Deine Fragen & Antworten zur FAU')
+    st.title('Words of Wisdom Testg')
 
     query = st.text_input("Stelle hier deine Frage", key='input')
 
