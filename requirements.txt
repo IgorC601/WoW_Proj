@@ -51,7 +51,6 @@ jupyter_client==8.4.0
 jupyter_core==5.4.0
 jupyterlab-pygments==0.2.2
 langchain==0.2.8
-langsmith==0.0.44
 loguru==0.7.2
 markdown-it-py==3.0.0
 MarkupSafe==2.1.3
